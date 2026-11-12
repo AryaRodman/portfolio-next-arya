@@ -1,0 +1,57 @@
+/* ---------- Hero: nempel di atas, lalu "ditutup" section berikutnya ---------- */
+section.hero {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  height: 100vh;
+  background: #000;
+  transform-origin: 50% 100%;
+  transform: translate3d(0, calc(var(--p, 0) * -8vh), 0)
+    scale(calc(1 - var(--p, 0) * 0.1));
+  will-change: transform;
+}
+
+/* gelapkan hero pelan-pelan saat tertutup */
+section.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: calc(var(--p, 0) * 0.8);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ---------- Judul besar di bawah, lebar penuh ---------- */
+section.hero .name h1 {
+  top: auto;
+  bottom: 1vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 12.4vw;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  color: #fff;
+
+  /* RGB split mengikuti gerakan mouse (--rgb-x/--rgb-y diisi oleh SmokeBackground) */
+  text-shadow:
+    calc(var(--rgb-x, 0) * 1px) calc(var(--rgb-y, 0) * 1px) 0 rgba(255, 0, 60, 0.85),
+    calc(var(--rgb-x, 0) * -1px) calc(var(--rgb-y, 0) * -1px) 0 rgba(0, 200, 255, 0.85);
+}
+
+/* ---------- Section setelah hero harus menutupi hero ---------- */
+.intro,
+section.work {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.hero {
+    transform: none;
+  }
+}

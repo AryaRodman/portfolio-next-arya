@@ -1,0 +1,173 @@
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 7rem 2rem 5rem;
+}
+
+.page h2 {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    margin-bottom: 1.25rem;
+}
+
+.page section {
+    margin-top: 6rem;
+}
+
+/* ---------- 1. HERO ---------- */
+.hero {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3rem;
+    align-items: end;
+    margin-top: 0 !important;
+}
+
+.hero h1 {
+    font-size: clamp(3.5rem, 11vw, 9rem);
+    line-height: 0.95;
+}
+
+.tagline {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    max-width: 22ch;
+}
+
+.portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    background: rgba(128, 128, 128, 0.18);
+    overflow: hidden;
+}
+
+.portrait img {
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+/* ---------- 2 & 3. TEKS ---------- */
+.intro p {
+    color: white;
+    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+    line-height: 1.35;
+    max-width: 32ch;
+}
+
+.outside p {
+    line-height: 1.7;
+    max-width: 56ch;
+}
+
+
+
+/* ---------- 5. KNOW ME BETTER ---------- */
+.know ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.know li {
+    border-top: 1px solid rgba(128, 128, 128, 0.4);
+}
+
+.know li:last-child {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.4);
+}
+
+.know a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    color: white;
+    text-decoration: none;
+    transition: padding-left 0.3s ease;
+}
+
+.know a:hover {
+    padding-left: 1rem;
+}
+
+.linkLabel {
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.linkDesc {
+    max-width: 34ch;
+    text-align: right;
+    line-height: 1.5;
+    opacity: 0.65;
+}
+
+/* ---------- 6. CTA ---------- */
+.cta h2 {
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+    opacity: 1;
+    line-height: 1.05;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.9rem 2rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.button:hover {
+    opacity: 0.6;
+}
+
+/* ---------- LAYAR KECIL ---------- */
+@media (max-width: 800px) {
+    .page {
+        padding-top: 6rem;
+    }
+
+    .page section {
+        margin-top: 4rem;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .portrait {
+        max-width: 360px;
+    }
+
+    .card {
+        width: 220px;
+    }
+
+    .know a {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .linkDesc {
+        text-align: left;
+    }
+}
+
+/* Hormati pengguna yang mematikan animasi */
+@media (prefers-reduced-motion: reduce) {
+    .track {
+        animation: none;
+    }
+}

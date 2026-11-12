@@ -1,0 +1,245 @@
+/* Pakai section.work supaya menang specificity dari `section {}` global */
+section.work {
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 3rem;
+  padding: 3rem 3rem 4rem;
+  color: #fff;
+  background: #0a0a0a;
+  border-top: 1px solid #222;
+}
+
+/* Reset p global (uppercase, hitam, 14px) hanya di dalam section ini */
+.work p {
+  color: inherit;
+  text-transform: none;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.work .work-meta{
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.work .work-desc{
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+/* ---------- Info row ---------- */
+.work-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.work-info-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.work-tag {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  background: #1e1e1e;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ---------- Stage: kiri sticky, kanan scroll ---------- */
+.work-stage {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) 2.5fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.work-left {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* h2 dipakai (bukan h1) karena h1 global posisinya absolute */
+.work-title {
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.work-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.work-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  color: #8a8a8a;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.work-list li.is-active {
+  color: #fff;
+}
+
+.work-list li.is-active .work-name {
+  font-weight: 600;
+}
+
+.work-num {
+  font-variant-numeric: tabular-nums;
+}
+
+.work-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff5a2c;
+}
+
+.work-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  animation: work-fade 0.4s ease;
+}
+
+.work-desc {
+  font-size: 1.2rem;
+  color: #8a8a8a;
+  max-width: 28ch;
+}
+
+.work-meta {
+  font-size: 1rem;
+  color: #8a8a8a;
+}
+
+.work-link {
+  color: #fff;
+  font-size: 1.1rem;
+  text-transform: none;
+  line-height: 1.2;
+  width: fit-content;
+  border-bottom: 1px solid #555;
+}
+
+.work-counter {
+  margin-top: auto;
+  color: #8a8a8a;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes work-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Kanan: project ikut ter-scroll ---------- */
+.work-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-card {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.work-card-title {
+  display: none; /* hanya tampil di mobile */
+}
+
+.work-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.work-preview img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-detail { animation: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  section.work {
+    padding: 2rem 1.25rem 3rem;
+  }
+
+  .work-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .work-stage {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* di mobile: tidak sticky, daftar & detail kiri disembunyikan,
+     tiap card menampilkan judulnya sendiri */
+  .work-left {
+    position: static;
+    height: auto;
+    padding: 0;
+  }
+
+  .work-list,
+  .work-detail,
+  .work-counter {
+    display: none;
+  }
+
+  .work-card {
+    min-height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0 0 2rem;
+  }
+
+  .work-card-title {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+
+  .work p {
+    font-size: 1.2rem;
+  }
+}
